@@ -8,4 +8,4 @@ jobs:
       - checkout 
       - setup_remote_docker: 
           docker_layer_caching: true 
-      - run: mkdir build && cd build && cmake .. && make && ls
+      - run: git submodule init && git submodule update && mkdir build && cd build && cmake .. && make && ls
