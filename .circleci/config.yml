@@ -6,11 +6,8 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: "set up submodules"
-          command: |
-            git submodule init
-            git submodule update
-      - run:
-          name: "build"
-          command: mkdir build && cd build && cmake .. && make && ls
+      - run: ls -sort
+      - run: git submodule init
+      - run: git submodule update
+      - run: ls -sort        
+      - run: mkdir build && cd build && cmake .. && make && ls
