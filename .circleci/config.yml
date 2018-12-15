@@ -10,10 +10,7 @@ jobs:
           docker_layer_caching: true 
       - run: pwd
       - run: ls
-      - run: mkdir build 
-      - run: cd build
-      - run: pwd
       - run: ls
-      - run: cmake ..
+      - run: cmake
       - run: make
-
+      - run: ls
