@@ -1,0 +1,17 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: ajmasiaa/carta-backend-builder-ubuntu
+
+    steps: 
+      - checkout 
+      - setup_remote_docker: 
+          docker_layer_caching: true 
+      - run: docker build .
+      - run: pwd
+      - run: ls
+      - run: mkdir build && cd build
+      - run: cmake ..
+      - run: make
+
