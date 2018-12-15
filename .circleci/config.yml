@@ -12,5 +12,5 @@ jobs:
             git submodule init
             git submodule update
       - run:
-        name: "build"
-        command: mkdir build && cd build && cmake .. && make && ls
+          name: "build"
+          command: mkdir build && cd build && cmake .. && make && ls
