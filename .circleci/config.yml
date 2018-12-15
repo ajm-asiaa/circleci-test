@@ -4,9 +4,13 @@ jobs:
     docker:
       - image: ajmasiaa/carta-backend-builder-ubuntu
 
-    steps: 
-      - checkout 
-      - setup_remote_docker: 
-          docker_layer_caching: true 
-      - run: git submodule init && git submodule update 
-      - run: mkdir build && cd build && cmake .. && make && ls
+    steps:
+      - checkout
+      - run:
+          name: "set up submodules"
+          command: |
+            git submodule init
+            git submodule update
+      - run:
+        name: "build"
+        command: mkdir build && cd build && cmake .. && make && ls
