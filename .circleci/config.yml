@@ -27,7 +27,7 @@ jobs:
             git submodule update
       - run:
           name: "build CentOS6 version"
-          command: mkdir build && cd build && cmake .. && make && ls
+          command: source /etc/bashrc && mkdir build && cd build && cmake .. && make && ls
 
 workflows:
   version: 2
