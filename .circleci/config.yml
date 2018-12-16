@@ -1,17 +1,30 @@
 version: 2.0
 jobs:
-  build:
+  ubuntu:
     docker:
       - image: ajmasiaa/carta-backend-builder-ubuntu
-
     steps:
       - checkout
       - run:
-          name: "Pull Submodules"
+          name: "submodules"
           command: |
             git submodule add https://github.com/idia-astro/carta-protobuf
             git submodule init
             git submodule update
       - run:
-          name: "Build"
+          name: "build ubuntu version"
+          command: mkdir build && cd build && cmake .. && make && ls
+  centos6:
+    docker:
+      - image: ajmasiaa/carta-backend-builder-centos6
+    steps:
+      - checkout
+      - run:
+          name: "submodules"
+          command: |
+            git submodule add https://github.com/idia-astro/carta-protobuf
+            git submodule init
+            git submodule update
+      - run:
+          name: "build CentOS6 version"
           command: mkdir build && cd build && cmake .. && make && ls
