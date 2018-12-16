@@ -1,6 +1,6 @@
 version: 2.0
 jobs:
-  build:
+  "ubuntu":
     docker:
       - image: ajmasiaa/carta-backend-builder-ubuntu
     steps:
@@ -14,7 +14,7 @@ jobs:
       - run:
           name: "build ubuntu version"
           command: mkdir build && cd build && cmake .. && make && ls
-  test:
+  "centos6":
     docker:
       - image: ajmasiaa/carta-backend-builder-centos6
     steps:
@@ -28,3 +28,10 @@ jobs:
       - run:
           name: "build CentOS6 version"
           command: mkdir build && cd build && cmake .. && make && ls
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "ubuntu"
+      - "centos6"
